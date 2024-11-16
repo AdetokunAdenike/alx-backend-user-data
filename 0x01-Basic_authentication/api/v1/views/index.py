@@ -3,7 +3,7 @@
 """
 from flask import jsonify, abort
 from api.v1.views import app_views
-from typing import Literal, Tuple
+from flask import abort, Blueprint
 
 
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
@@ -26,6 +26,7 @@ def stats() -> str:
     stats['users'] = User.count()
     return jsonify(stats)
 
+app_views = Blueprint('app_views', __name__, url_prefix='/api/v1')
 @app_views.route('/unauthorized/', methods=['GET'], strict_slashes=False)
 def unauthorized() -> None:
     """ Endpoint to trigger a 401 Unauthorized error
