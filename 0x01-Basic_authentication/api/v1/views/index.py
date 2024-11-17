@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """ Module of Index views
 """
-from flask import jsonify, abort, Bluepprint
+from flask import jsonify, abort, Blueprint
 from api.v1.views import app_views
 
-app_views = Blueprint('app_views', __name__, url_prefix='/api/v1')
 
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
 def status() -> str:
@@ -32,3 +31,9 @@ def unauthorized() -> None:
     
     """
     return abort(401)
+
+@app_views.route('/forbidden', methods=["GET"], strict_slashes=False)
+def forbidden():
+    """ Endpoint to trigger a 403 Forbidden error
+    """
+    return abort(403)
