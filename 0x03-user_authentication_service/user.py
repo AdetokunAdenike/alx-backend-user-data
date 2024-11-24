@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-er model for authentication service.
+User model for authentication service.
 """
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
@@ -11,7 +11,7 @@ Base = declarative_base()
 class User(Base):
     """
     User class for representing the 'users' table in the database.
-    
+
     Attributes:
         id (int): The user's ID (primary key).
         email (str): The user's email (non-nullable).
